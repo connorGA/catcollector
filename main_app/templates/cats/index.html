@@ -12,18 +12,10 @@
     
     {% for cat in cats %} 
         <div class="card text-center">
-            <div class="card-header">
-            Cat called {{ cat }}
-            </div>
             <div class="card-body">
             <h5 class="card-title">{{ cat.name }}</h5>
-            <p class="card-text">{{ cat.description }}</p>
-            <p class="card-text"> Breed: {{ cat.breed }}</p>
-            <p class="card-text"> Age: {{ cat.age }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-                See more cats below!
+           
+            <a href="/cats/{{ cat.id }}" class="btn btn-primary">View {{ cat.name }}</a>
             </div>
         </div>
     {% endfor %}
