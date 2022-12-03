@@ -20,6 +20,28 @@ from .models import Cat
 #     Cat('Garfield', 'tabbycat', 'likes lasagna', 43)
 # ]
 
+# add these lines to the imports at the top
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.http import HttpResponseRedirect
+
+class CatCreate(CreateView):
+  model = Cat
+  fields = '__all__'
+  success_url = '/cats'
+
+class CatUpdate(UpdateView):
+  model = Cat
+  fields = ['name', 'breed', 'description', 'age']
+
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.save()
+    return HttpResponseRedirect('/cats/' + str(self.object.pk))
+
+class CatDelete(DeleteView):
+  model = Cat
+  success_url = '/cats'
+
 # Create your views here.
 def index(request):
     cats = list(Cat.objects.all())
