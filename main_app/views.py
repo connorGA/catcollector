@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # import Cat model thats connected to the Database
-from .models import Cat
+from .models import Cat, Dog
 
 # temp add Cats class
 # class Cat:
@@ -23,7 +23,13 @@ from .models import Cat
 # add these lines to the imports at the top
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
+# DOGS
+class DogCreate(CreateView):
+  model = Dog
+  fields = '__all__'
+  success_url = '/'
 
+# CATS
 class CatCreate(CreateView):
   model = Cat
   fields = '__all__'
