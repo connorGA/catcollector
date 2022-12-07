@@ -13,4 +13,5 @@ urlpatterns = [
     path('cats/<int:pk>/update', views.CatUpdate.as_view(), name='cats_update'),
     path('cats/<int:pk>/delete', views.CatDelete.as_view(), name='cats_delete'),
     path('dogs/create/', views.DogCreate.as_view(), name='dogs_create'),
+    path('user/<username>', views.profile, name='profile'),
 ]
